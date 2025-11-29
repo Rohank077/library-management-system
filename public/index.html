@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS | Library System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="login-section" class="container">
+        <h2 id="auth-title">Member Login</h2>
+        <input type="text" id="username" placeholder="Username" class="input-field">
+        <input type="password" id="password" placeholder="Password" class="input-field">
+        
+        <div id="admin-register-div" class="hidden checkbox-wrapper">
+            <label><input type="checkbox" id="isAdmin"> Register as Admin</label>
+        </div>
+
+        <button id="auth-btn" onclick="login()" class="btn-primary">Login</button>
+        <p id="login-error" class="error-msg"></p>
+        <p class="auth-toggle" onclick="toggleAuth()">Create an account</p>
+    </div>
+
+    <div id="dashboard-section" class="container hidden">
+        <div class="header">
+            <h2 id="welcome-msg">Dashboard</h2>
+            <button onclick="logout()" class="btn-danger">Logout</button>
+        </div>
+
+        <div id="notification-area" class="alert hidden"></div>
+
+        <div id="admin-panel" class="hidden">
+            <h3>Overview</h3>
+            <div class="stats-grid">
+                <div class="card">Borrowed: <span id="stat-borrowed">0</span></div>
+                <div class="card">Returned: <span id="stat-returned">0</span></div>
+                <div class="card overdue">Overdue: <span id="stat-overdue">0</span></div>
+            </div>
+            
+            <div class="form-panel">
+                <h3>Inventory Management</h3>
+                <input type="text" id="bookTitle" placeholder="Title">
+                <input type="text" id="bookAuthor" placeholder="Author">
+                <input type="text" id="bookCategory" placeholder="Category">
+                <input type="number" id="bookQty" placeholder="Quantity">
+                <div class="btn-group">
+                    <button id="add-book-btn" onclick="addBook()">Add Book</button>
+                    <button id="cancel-edit-btn" class="hidden btn-danger" onclick="resetForm()">Cancel</button>
+                </div>
+            </div>
+
+            <hr>
+            <h3>User Management</h3>
+            <button onclick="loadUsers()" class="btn-secondary">Refresh List</button>
+            <ul id="user-list" class="list-group"></ul>
+            <hr>
+        </div>
+
+        <h3>Library Catalog</h3>
+        <div class="search-bar">
+            <input type="text" id="searchQuery" placeholder="Search Title/Author...">
+            <select id="categoryFilter">
+                <option value="All">All Categories</option>
+                <option value="Fiction">Fiction</option>
+                <option value="Science">Science</option>
+                <option value="History">History</option>
+            </select>
+            <button onclick="loadBooks()">Filter</button>
+        </div>
+
+        <div id="book-list" class="grid-container"></div>
+
+        <div id="user-panel" class="panel hidden">
+            <h3>My Active Loans</h3>
+            <ul id="my-books-list" class="list-group"></ul>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
