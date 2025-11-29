@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',       // UPDATE WITH YOUR CONFIG
-    password: 'password', // UPDATE WITH YOUR CONFIG
+    password: 'rohan', // UPDATE WITH YOUR CONFIG
     database: 'library_db'
 });
 
